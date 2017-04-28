@@ -90,18 +90,13 @@ int IsFull(CircularQueue Q) {
   return Q->qsize==Q->capacity?true:false;    
 }
 
-void Handler(int* value, CircularQueue Q) {
-  *value = (*value)+1 % Q->capacity;
-}
-
 void Dequeue(CircularQueue Q) {
   if ( IsEmpty(Q) ) {
     printf("empty space\n");
   } 
   else {
     Q->key[Q->first] = -1;
-//    Q->first = (Q->first+1) % Q->capacity;
-    Handler(&Q->first, Q);
+    Q->first = (Q->first+1) % Q->capacity;
     Q->qsize-=1;
   }
 }
@@ -111,8 +106,7 @@ void Enqueue(CircularQueue Q, int X) {
     printf("full space\n");
   } 
   else {
-//    Q->rear = (Q->rear+1) % Q->capacity; 
-    Handler(&Q->rear, Q);
+    Q->rear = (Q->rear+1) % Q->capacity; 
     Q->key[Q->rear] = X;
     Q->qsize+=1;
   }

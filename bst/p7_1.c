@@ -16,6 +16,7 @@ Tree *InsertNode(Tree *root, int key);
 Tree *DeleteNode(Tree *root, int key);
 Tree *FindNode(Tree *root, int key);
 Node *FindMinNode(Tree *root);
+Node *FindMaxNode(Tree *root);
 void PrintInorder(Tree *root);
 void PrintPreorder(Tree *root);
 void PrintPostorder(Tree *root);
@@ -170,7 +171,7 @@ Tree *FindNode(Tree *root, int key) {
   }
   else return tmp;
 }
-
+/*  // recursive implementation
 Node *FindMinNode(Tree *root) {
   Node *node = NULL;
   
@@ -184,6 +185,27 @@ Node *FindMinNode(Tree *root) {
     }
   }
   else return node;
+}
+*/
+// nonrecursive implementation
+Node *FindMinNode(Tree *root) {
+  if ( root != NULL ) {
+    while ( root->left != NULL ) {
+      root = root->left;
+    }
+    return root;
+  }
+  else return NULL; 
+}
+
+Node *FindMaxNode(Tree *root) {
+  if ( root != NULL ) {
+    while ( root->right != NULL ) {
+      root = root->right;
+    }
+    return root;
+  }
+  else return NULL;
 }
 
 void PrintInorder(Tree *root) {

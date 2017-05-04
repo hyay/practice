@@ -11,7 +11,6 @@ struct Tree_ {
   Tree *right;
 };
 
-Tree *MakeEmpty(int max);
 Tree *InsertNode(Tree *root, int key);
 Tree *DeleteNode(Tree *root, int key);
 Tree *FindNode(Tree *root, int key);
